@@ -7,11 +7,21 @@ const Cart = (props) => {
         const product = cart[i];
         total = total+product.price;
     }
+    let shipping = 0;
+    if(total > 35){
+        shipping = 0;
+    }else if (total > 15){
+        shipping = 4;
+    }
+
+    const grandTotal = (total+shipping).toFixed(2);
     return (
         <div>
             <h3>Order Summery</h3>
             <h4>Items Ordered: {cart.length}</h4>
+            <p><small>Shipping  Cost: {shipping}</small></p>
             <p>Item Price: {total}</p>
+            <p>Total Price: {grandTotal}</p>
         </div>
     );
 };
